@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using GradeBook.Enums;
 
 namespace GradeBook.GradeBooks
@@ -18,7 +19,7 @@ namespace GradeBook.GradeBooks
             foreach( Student student in Students)
             {
                 var threshold = (int)Math.Ceiling( Students.Count * 0.2 );
-                var grades = Students.OrderbyDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToLis();
+                var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
                 if (averageGrade > grades[threshold - 1])
                     return 'A';
                 else if (averageGrade > grades[2 * threshold - 1])
